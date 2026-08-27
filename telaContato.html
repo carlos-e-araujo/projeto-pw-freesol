@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeSol - Contato</title>
+</head>
+<body>
+    <header>
+        <!-- botao menu   -->
+        <button type="button">Menu</button>
+        <!-- logo e titulo -->
+        <div>
+            <img src="" alt="Ícone Sol"> <!-- falta colocar a logo-->
+            <strong>FreeSol</strong>
+            <span>ENERGIA SOCIAL</span>
+        </div>
+        <!-- botao contato -->
+        <button type="button">CONTATO</button>
+    </header>
+    <main>
+        <section>
+            <span>FALE CONOSCO</span>
+            <h1>Central de Atendimento</h1>
+            <p>Dúvidas, sugestões ou solicitações de doação? Envie uma mensagem.</p>
+        </section>
+        <!-- parte do forms   -->
+        <section>
+            <div>
+                <img src="" alt="Ícone Carta"> <!-- falta colocar a imagem da carta -->
+                <h2>CONTATO</h2>
+            </div>
+            <form action="#" method="POST">
+                <div>
+                    <label for="nome">NOME *</label>
+                    <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                </div>
+                <div>
+                    <label for="sobrenome">SOBRENOME *</label>
+                    <input type="text" id="sobrenome" name="sobrenome" placeholder="Seu sobrenome" required>
+                </div>
+                <div>
+                    <label for="telefone">TELEFONE *</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+                </div>          
+                <div>
+                    <label for="email">EMAIL *</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                </div>
+                <div>
+                    <label for="cep">CEP</label>
+                    <input type="text" id="cep" name="cep" placeholder="00000-000">
+                </div>             
+                <div>
+                    <label for="endereco">ENDEREÇO</label>
+                    <input type="text" id="endereco" name="endereco" placeholder="Rua, Número, Bairro">
+                </div>
+                <div>
+                    <label for="assunto">ASSUNTO *</label>
+                    <select id="assunto" name="assunto" required>
+                        <option value="" disabled selected>Selecione o assunto</option>
+                        <option value="duvida">Quero patrocinar (empresas)</option>
+                        <option value="sugestao">Solicitar painel solar (familia/produtor)</option>
+                        <option value="doacao">Ser voluntário</option>
+                        <option value="doacao">Dúvidas gerais </option>
+                    </select>
+                </div>
+                <div> 
+                    <label for="mensagem">MENSAGEM *</label>
+                    <textarea id="mensagem" name="mensagem" placeholder="Escreva sua mensagem detalhada aqui" rows="5" required></textarea>
+                </div>
+                <!-- botao enviar  -->
+                <button type="submit">ENVIAR</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>FreeSol Contato</p>
+    </footer>
+</body>
+</html>
