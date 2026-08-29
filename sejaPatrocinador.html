@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <dialog open> <!--pop up-->
+        <header>
+            <div>
+                <img src="" alt="Ícone de painel solar"> <!--falta colocar o src da imagem do painel solar-->
+                <h2>Patrocine o FreeSol</h2>
+            </div>
+            <button type="button" aria-label="Fechar"></button>
+        </header>
+        <main>
+            <p>Sua empresa pode doar painéis, apoiar a instalação de um parque comunitário ou patrocinar uma família.
+            </p>
+            <fieldset>
+                <legend>Simular doação corporativa:</legend>
+                <input type="range" id="simulador-range" name="simulador-range" min="1" max="100" value="5">
+                <div>
+                    <span>Kits de Painéis: <strong>5</strong></span>
+                    <span>Famílias impactadas: <strong>5</strong></span>
+                </div>
+            </fieldset>
+            <form action="#" method="post">
+                <div>
+                    <label for="empresa">NOME DA EMPRESA / INDÚSTRIA *</label>
+                    <input type="text" id="empresa" name="empresa" placeholder="Ex: SolarTech Brasil" required>
+                </div>
+                <div>
+                    <label for="emailCorp">E-MAIL CORPORATIVO *</label>
+                    <input type="email" id="emailCorp" name="emailCorp" placeholder="contato@empresa.com" required>
+                </div>
+                <div>
+                    <label for="tipoApoio">TIPO DE APOIO</label>
+                    <select id="tipoApoio" name="tipoApoio">
+                        <option value="equipamentos" selected>Doação de Equipamentos (Painéis/Inversores)</option>
+                        <option value="instalacao">Apoio na instalação de parque</option>
+                        <option value="patrocinio-familia">Patrocínio de família</option>
+                    </select>
+                </div>
+                <button type="submit">ENVIAR</button>
+            </form>
+        </main>
+    </dialog>
+</body>
+</html>
