@@ -4,9 +4,11 @@ main {
     min-height: calc(100vh - 70px);
 
     padding: 90px 16px 25px;
+
+    box-sizing: border-box;
 }
 
-/* VOLTAR AO BLOG SETINHA */
+/* SETINHA */
 main > section > div {
     margin-bottom: 14px;
 }
@@ -34,6 +36,7 @@ main > section > div a {
     transition: 0.2s;
 }
 
+
 /* Efeito ao passar o mouse */
 main > section > div a:hover {
     background-color: #f0f3f7;
@@ -43,7 +46,6 @@ main > section > div a:hover {
     color: #172033;
 }
 
-/* CARD */
 article {
     width: 100%;
 
@@ -55,10 +57,12 @@ article {
 
     padding: 16px;
 
+    box-sizing: border-box;
+
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-/* ETIQU+ETA */
+/* ETIQUETA */
 article > span {
     display: inline-block;
 
@@ -76,7 +80,6 @@ article > span {
     font-weight: bold;
 }
 
-/* TITULO */
 article h1 {
     font-size: 17px;
 
@@ -84,7 +87,7 @@ article h1 {
 
     color: #10182a;
 
-    margin-bottom: 12px;
+    margin: 0 0 12px;
 }
 
 article .informacoes {
@@ -126,10 +129,10 @@ article p {
 
     line-height: 1.6;
 
-    margin-bottom: 10px;
+    margin: 0 0 10px;
 }
 
-/* CAIXA */
+/* CAIXA DE CONQUISTAS */
 article .conquistas {
     background-color: #f8fafc;
 
@@ -149,13 +152,15 @@ article .conquistas h2 {
 
     color: #182236;
 
-    margin-bottom: 7px;
+    margin: 0 0 7px;
 }
 
 
 /* Lista */
 article .conquistas ul {
     padding-left: 17px;
+
+    margin: 0;
 }
 
 
@@ -174,4 +179,144 @@ article .conquistas li {
 /* Último item sem espaço */
 article .conquistas li:last-child {
     margin-bottom: 0;
+}
+
+/* MEDIA QUERY */
+@media (min-width: 768px) {
+
+    main {
+        width: 100%;
+        max-width: 900px;
+
+        margin: 0 auto;
+
+        padding: 45px 20px 70px;
+    }
+
+    /* BOTAO */
+    main > section > div {
+        margin-bottom: 18px;
+    }
+
+    main > section > div a {
+        padding: 8px 13px;
+
+        font-size: 11px;
+
+        border-radius: 8px;
+    }
+
+    article {
+        width: 100%;
+
+        padding: 28px;
+
+        border-radius: 15px;
+    }
+
+    /* ETIQUETA */
+    article > span {
+        padding: 4px 10px;
+
+        margin-bottom: 16px;
+
+        font-size: 9px;
+    }
+
+    article h1 {
+        font-size: 26px;
+
+        line-height: 1.3;
+
+        margin-bottom: 14px;
+    }
+
+    article .informacoes {
+        gap: 10px;
+
+        padding-bottom: 13px;
+
+        margin-bottom: 18px;
+
+        font-size: 10px;
+    }
+
+    article > img {
+        width: 100%;
+
+        height: 360px;
+
+        object-fit: cover;
+
+        border-radius: 12px;
+
+        margin-bottom: 20px;
+    }
+
+    article p {
+        font-size: 14px;
+
+        line-height: 1.7;
+
+        margin-bottom: 14px;
+    }
+
+    /* CAIXA */
+    article .conquistas {
+        padding: 18px;
+
+        margin: 18px 0 15px;
+
+        border-radius: 12px;
+    }
+
+
+    /* Título */
+    article .conquistas h2 {
+        font-size: 14px;
+
+        margin-bottom: 9px;
+    }
+
+
+    /* Lista */
+    article .conquistas ul {
+        padding-left: 20px;
+    }
+
+
+    /* Itens */
+    article .conquistas li {
+        font-size: 12px;
+
+        line-height: 1.6;
+
+        margin-bottom: 6px;
+    }
+}
+
+/* MEDIA */
+@media (min-width: 1200px) {
+
+    main {
+        max-width: 900px;
+
+        padding-top: 50px;
+    }
+
+    article {
+        padding: 32px;
+    }
+
+    article h1 {
+        font-size: 28px;
+    }
+
+    article > img {
+        height: 380px;
+    }
+
+    article p {
+        font-size: 14px;
+    }
 }
