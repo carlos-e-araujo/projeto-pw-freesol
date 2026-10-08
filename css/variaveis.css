@@ -1,0 +1,40 @@
+:root {
+    /* Cores Primárias (Identidade Solar) */
+    --cor-primaria: #f59e0b;
+    --cor-primaria-clara: #fbbf24;
+    --cor-primaria-escura: #d97706;
+    --cor-primaria-hover: #b45309;
+    --cor-primaria-destaque: #fcd34d;
+
+    /* Tons Escuros */
+    --cor-escuro-900: #0f172a;
+    --cor-escuro-800: #1e293b;
+    --cor-escuro-700: #334155;
+    --cor-escuro-600: #475569;
+    --cor-icone-header: #263449;
+
+    /* Textos */
+    --cor-texto-principal: #1e293b;
+    --cor-texto-titulo: #0f172a;
+    --cor-texto-corpo: #475569;
+    --cor-texto-secundario: #64748b;
+    --cor-texto-mutado: #94a3b8;
+    --cor-texto-claro: #cbd5e1;
+
+    /* Fundos e Bordas */
+    --cor-fundo-pagina: #f5f7fa;
+    --cor-fundo-suave: #f1f5f9;
+    --cor-fundo-card: #ffffff;
+    --cor-borda: #dce2e8;
+    --cor-borda-suave: #e2e8f0;
+    --cor-borda-cinza: #8b98aa;
+    --cor-branco: #ffffff;
+
+    /* Sombras e Transparências */
+    --cor-overlay: rgba(15, 23, 42, 0.65);
+    --cor-gaveta: rgba(15, 23, 42, 0.94);
+    --sombra-primaria: rgba(245, 158, 11, 0.35);
+    --sombra-primaria-suave: rgba(245, 158, 11, 0.2);
+    --sombra-botao: rgba(245, 158, 11, 0.3);
+    --sombra-card: rgba(0, 0, 0, 0.04);
+}

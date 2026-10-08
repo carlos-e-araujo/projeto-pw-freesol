@@ -1,31 +1,266 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>FreeSol - Energia Solar Social</title>
+
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/variaveis.css" />
+    <link rel="stylesheet" href="../css/menu.css" />
+    <link rel="stylesheet" href="../css/home.css" />
 </head>
 
 <body>
+    <header>
+        <button type="button" id="btnAbrirMenu" aria-label="Abrir Menu">
+            <i data-lucide="menu"></i>
+        </button>
 
-    <section class="noticias">
+        <a href="index.html" class="header-marca">
+            <div class="header-sol-circulo">
+                <i data-lucide="sun"></i>
+            </div>
 
-        <div class="card-wrapper">
-            <img src="" alt="" class="img-news-card">
+            <div class="header-textos">
+                <span class="header-titulo">Free<b>Sol</b></span>
+                <span class="header-subtitulo">ENERGIA SOCIAL</span>
+            </div>
+        </a>
 
-            </img>
+        <a href="telaContato.html">CONTATO</a>
+    </header>
 
-            <h3 class="news-title">
-            </h3>
+    <!-- SIDEBAR -->
+    <div id="menuOverlay" class="menu-overlay" aria-hidden="true">
+        <aside class="menu-gaveta">
+            <div class="menu-topo">
+                <button type="button" id="btnFecharMenu" class="btn-fechar-menu" aria-label="Fechar menu">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
 
-            <p class="news-description"></p>
+            <div class="menu-conteudo">
+                <div class="menu-logo-icone">
+                    <i data-lucide="sun"></i>
+                </div>
 
-            <a href="" class="news-read-more"></a>
+                <h2 class="menu-logo-texto">Free<b>Sol</b></h2>
+
+                <nav class="menu-links">
+                    <a href="index.html" class="ativo">INÍCIO</a>
+                    <a href="sobreNos.html">SOBRE NÓS</a>
+                    <a href="blogs.html">BLOG</a>
+                    <a href="telaContato.html">CONTATO</a>
+                </nav>
+
+                <a href="sejaPatrocinador.html" class="btn-menu-patrocinar">
+                    <i data-lucide="heart-handshake"></i> Seja um Patrocinador
+                </a>
+            </div>
+
+            <div class="menu-rodape">FreeSol • Energia Solar para Todos</div>
+        </aside>
+    </div>
+
+    <main class="home-main">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-conteudo">
+                <span class="hero-badge">
+                    <i data-lucide="zap"></i> Projeto Social Sem Fins Lucrativos
+                </span>
+
+                <h1>Energia solar para quem mais precisa.</h1>
+
+                <p>
+                    Democratizamos o acesso à energia limpa fornecendo painéis solares para famílias vulneráveis e
+                    pequenos produtores rurais.
+                </p>
+
+                <div class="hero-acoes">
+                    <a href="sejaPatrocinador.html" class="btn-principal">
+                        <i data-lucide="heart-handshake"></i> SEJA UM PATROCINADOR
+                    </a>
+
+                    <a href="sobreNos.html" class="btn-secundario">Conheça o Projeto</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="conteudo-pagina">
+            <!-- IMPACTO -->
+            <section class="card-impacto">
+                <div class="impacto-item">
+                    <span class="impacto-numero">120+</span>
+                    <span class="impacto-legenda">Famílias</span>
+                </div>
+
+                <div class="impacto-divisor"></div>
+
+                <div class="impacto-item">
+                    <span class="impacto-numero">45</span>
+                    <span class="impacto-legenda">Produtores</span>
+                </div>
+
+                <div class="impacto-divisor"></div>
+
+                <div class="impacto-item">
+                    <span class="impacto-numero">18</span>
+                    <span class="impacto-legenda">Empresas</span>
+                </div>
+            </section>
+
+            <!-- NOTÍCIAS -->
+            <section class="secao-noticias">
+                <div class="secao-topo">
+                    <h2 class="secao-titulo">Notícias</h2>
+                    <a href="blogs.html" class="secao-link-todas">Ver todas <i data-lucide="chevron-right"></i></a>
+                </div>
+
+                <div class="noticias-conteudo">
+                    <a href="blogIndividual.html" class="card-destaque">
+                        <div class="card-destaque-imagem">
+                            <img src="https://images.unsplash.com/photo-1660330589782-83776f89dd1e?auto=format&fit=crop&w=600&q=80"
+                                alt="Painéis solares comunitários" />
+
+                            <span class="badge-destaque">Destaque</span>
+                        </div>
+
+                        <div class="card-destaque-corpo">
+                            <span class="card-data">18 de Agosto, 2026</span>
+
+                            <h3 class="card-destaque-titulo">
+                                FreeSol instala primeiro parque solar comunitário para
+                                agricultores da região
+                            </h3>
+
+                            <p class="card-destaque-resumo">
+                                Iniciativa beneficiou mais de 30 pequenas propriedades rurais,
+                                garantindo redução de até 85% no custo da energia.
+                            </p>
+
+                            <span class="card-link-acao">
+                                Leia a matéria <i data-lucide="arrow-right"></i>
+                            </span>
+                        </div>
+                    </a>
+
+                    <div class="noticias-secundarias">
+                        <a href="blogs.html" class="card-secundario">
+                            <div class="card-secundario-imagem">
+                                <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=300&q=80"
+                                    alt="Instalação solar industrial" />
+                            </div>
+
+                            <div class="card-secundario-corpo">
+                                <div>
+                                    <span class="card-categoria">Sustentabilidade</span>
+
+                                    <h4 class="card-secundario-titulo">
+                                        Como grandes indústrias estão zerando impostos com doações
+                                    </h4>
+                                </div>
+
+                                <span class="card-link-acao">Ver <i data-lucide="chevron-right"></i></span>
+                            </div>
+                        </a>
+
+                        <a href="blogs.html" class="card-secundario">
+                            <div class="card-secundario-imagem">
+                                <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=300&q=80"
+                                    alt="Energia Limpa e painéis solares" />
+                            </div>
+
+                            <div class="card-secundario-corpo">
+                                <div>
+                                    <span class="card-categoria">Parcerias</span>
+
+                                    <h4 class="card-secundario-titulo">
+                                        Empresas de painéis solares doam kits de geração para comunidades
+                                    </h4>
+                                </div>
+
+                                <span class="card-link-acao">
+                                    Ver <i data-lucide="chevron-right"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PATROCINADORES -->
+            <section class="secao-patrocinadores">
+                <div class="secao-topo">
+                    <h2 class="secao-titulo">Patrocinadores</h2>
+
+                    <a href="sejaPatrocinador.html" class="secao-link-todas">
+                        Patrocinar <i data-lucide="chevron-right"></i>
+                    </a>
+                </div>
+
+                <p class="patrocinadores-descricao">
+                    Grandes indústrias e fornecedores solares que tornam o FreeSol possível:
+                </p>
+
+                <div class="patrocinadores-lista">
+                    <div class="patrocinador-item">
+                        <span class="patrocinador-icone"><i data-lucide="sun"></i></span>
+                        <span class="patrocinador-nome">SolarTech</span>
+                    </div>
+
+                    <div class="patrocinador-item">
+                        <span class="patrocinador-icone"><i data-lucide="factory"></i></span>
+                        <span class="patrocinador-nome">EcoIndústria</span>
+                    </div>
+
+                    <div class="patrocinador-item">
+                        <span class="patrocinador-icone"><i data-lucide="leaf"></i></span>
+                        <span class="patrocinador-nome">GreenGrid</span>
+                    </div>
+
+                    <div class="patrocinador-item">
+                        <span class="patrocinador-icone"><i data-lucide="zap"></i></span>
+                        <span class="patrocinador-nome">Voltaic Energy</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer-completo">
+        <div class="footer-logo">
+            <div class="footer-logo-icone">
+                <i data-lucide="sun"></i>
+            </div>
+
+            <span class="footer-logo-texto">FreeSol</span>
         </div>
 
-    </section>
+        <p class="footer-resumo">
+            Projeto Social de Fornecimento de Energia Solar Limpa e Acessível.
+        </p>
 
+        <nav class="footer-nav">
+            <a href="index.html">Início</a>
+            <a href="sobreNos.html">Sobre</a>
+            <a href="blogs.html">Blog</a>
+            <a href="telaContato.html">Contato</a>
+        </nav>
+
+        <div class="footer-copia">
+            FOOTER • FreeSol © 2026. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../js/menu.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 
 </html>
