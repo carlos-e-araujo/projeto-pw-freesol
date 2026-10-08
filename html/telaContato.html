@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreeSol - Contato</title>
-    <link rel="stylesheet" href="../css/telaContato.css">
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/telaContato.css">
 </head>
 
 <body>
@@ -52,7 +52,7 @@
                     <a href="telaContato.html" class="ativo">CONTATO</a>
                 </nav>
 
-                <a href="sejaPatrocinador.html" class="btn-menu-patrocinar">
+                <a href="#modalPatrocinador" onclick="if (window.fecharMenu) fecharMenu(); document.getElementById('modalPatrocinador').showModal(); return false;" class="btn-menu-patrocinar">
                     <i data-lucide="heart-handshake"></i> Seja um Patrocinador
                 </a>
             </div>
@@ -119,6 +119,47 @@
             </form>
         </section>
     </main>
+
+    <!-- MODAL SEJA PATROCINADOR -->
+    <dialog id="modalPatrocinador" class="modal-patrocinador" onclick="if (event.target === this) this.close()">
+        <header>
+            <div>
+                <i data-lucide="sun"></i>
+                <h2>Patrocine o FreeSol</h2>
+            </div>
+            <button type="button" id="btnFecharModalPatrocinador" onclick="document.getElementById('modalPatrocinador').close()" aria-label="Fechar"></button>
+        </header>
+        <main>
+            <p>Sua empresa pode doar painéis, apoiar a instalação de um parque comunitário ou patrocinar uma família.</p>
+            <fieldset>
+                <legend>Simular doação corporativa:</legend>
+                <input type="range" id="simulador-range" name="simulador-range" min="1" max="100" value="5" oninput="document.getElementById('valorPaineis').innerText = this.value; document.getElementById('valorFamilias').innerText = this.value">
+                <div>
+                    <span>Kits de Painéis: <strong id="valorPaineis">5</strong></span>
+                    <span>Famílias impactadas: <strong id="valorFamilias">5</strong></span>
+                </div>
+            </fieldset>
+            <form action="#" method="post" onsubmit="alert('Obrigado pelo seu interesse! Nossa equipe entrará em contato em breve.'); document.getElementById('modalPatrocinador').close(); return false;">
+                <div>
+                    <label for="empresa">NOME DA EMPRESA / INDÚSTRIA *</label>
+                    <input type="text" id="empresa" name="empresa" placeholder="Ex: SolarTech Brasil" required>
+                </div>
+                <div>
+                    <label for="emailCorp">E-MAIL CORPORATIVO *</label>
+                    <input type="email" id="emailCorp" name="emailCorp" placeholder="contato@empresa.com" required>
+                </div>
+                <div>
+                    <label for="tipoApoio">TIPO DE APOIO</label>
+                    <select id="tipoApoio" name="tipoApoio">
+                        <option value="equipamentos" selected>Doação de Equipamentos (Painéis/Inversores)</option>
+                        <option value="instalacao">Apoio na instalação de parque</option>
+                        <option value="patrocinio-familia">Patrocínio de família</option>
+                    </select>
+                </div>
+                <button type="submit">ENVIAR</button>
+            </form>
+        </main>
+    </dialog>
 
     <footer class="footer-completo">
         <div class="footer-logo">

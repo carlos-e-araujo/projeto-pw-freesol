@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    window.fecharMenu = fecharMenu;
+
     if (btnAbrir) {
         btnAbrir.addEventListener('click', abrirMenu);
     }
