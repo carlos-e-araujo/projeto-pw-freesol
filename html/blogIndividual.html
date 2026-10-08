@@ -12,18 +12,55 @@
 
   <body>
     <header>
-      <button type="button">☰</button>
+      <button type="button" id="btnAbrirMenu" aria-label="Abrir Menu">
+        <i data-lucide="menu"></i>
+      </button>
 
-      <div>
-        <img src="imagemlogo.jpg" alt="Logo FreeSol" />
+      <a href="index.html" class="header-marca">
+        <div class="header-sol-circulo">
+          <i data-lucide="sun"></i>
+        </div>
 
-        <strong>☀ FreeSol</strong>
+        <div class="header-textos">
+          <span class="header-titulo">Free<b>Sol</b></span>
+          <span class="header-subtitulo">ENERGIA SOCIAL</span>
+        </div>
+      </a>
 
-        <span>ENERGIA SOCIAL</span>
-      </div>
-
-      <a href="#"> CONTATO </a>
+      <a href="telaContato.html">CONTATO</a>
     </header>
+
+    <!-- SIDEBAR -->
+    <div id="menuOverlay" class="menu-overlay" aria-hidden="true">
+      <aside class="menu-gaveta">
+        <div class="menu-topo">
+          <button type="button" id="btnFecharMenu" class="btn-fechar-menu" aria-label="Fechar menu">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+
+        <div class="menu-conteudo">
+          <div class="menu-logo-icone">
+            <i data-lucide="sun"></i>
+          </div>
+
+          <h2 class="menu-logo-texto">Free<b>Sol</b></h2>
+
+          <nav class="menu-links">
+            <a href="index.html">INÍCIO</a>
+            <a href="sobreNos.html">SOBRE NÓS</a>
+            <a href="blogs.html" class="ativo">BLOG</a>
+            <a href="telaContato.html">CONTATO</a>
+          </nav>
+
+          <a href="sejaPatrocinador.html" class="btn-menu-patrocinar">
+            <i data-lucide="heart-handshake"></i> Seja um Patrocinador
+          </a>
+        </div>
+
+        <div class="menu-rodape">FreeSol • Energia Solar para Todos</div>
+      </aside>
+    </div>
 
     <main>
       <section>
@@ -79,8 +116,35 @@
       </section>
     </main>
 
-    <footer>
-      <p>FreeSol Post</p>
+    <footer class="footer-completo">
+      <div class="footer-logo">
+        <div class="footer-logo-icone">
+          <i data-lucide="sun"></i>
+        </div>
+
+        <span class="footer-logo-texto">FreeSol</span>
+      </div>
+
+      <p class="footer-resumo">
+        Projeto Social de Fornecimento de Energia Solar Limpa e Acessível.
+      </p>
+
+      <nav class="footer-nav">
+        <a href="index.html">Início</a>
+        <a href="sobreNos.html">Sobre</a>
+        <a href="blogs.html">Blog</a>
+        <a href="telaContato.html">Contato</a>
+      </nav>
+
+      <div class="footer-copia">
+        FOOTER • FreeSol © 2026. Todos os direitos reservados.
+      </div>
     </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../js/menu.js"></script>
+    <script>
+      lucide.createIcons();
+    </script>
   </body>
 </html>
