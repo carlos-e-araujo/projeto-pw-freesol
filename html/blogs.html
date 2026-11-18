@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>FreeSol - Blogs</title>
 
     <link rel="stylesheet" href="../css/global.css">
@@ -55,7 +55,9 @@
                     <a href="telaContato.html">CONTATO</a>
                 </nav>
 
-                <a href="#modalPatrocinador" onclick="if (window.fecharMenu) fecharMenu(); document.getElementById('modalPatrocinador').showModal(); return false;" class="btn-menu-patrocinar">
+                <a href="#modalPatrocinador"
+                    onclick="if (window.fecharMenu) fecharMenu(); document.getElementById('modalPatrocinador').showModal(); return false;"
+                    class="btn-menu-patrocinar">
                     <i data-lucide="heart-handshake"></i> Seja um Patrocinador
                 </a>
             </div>
@@ -86,7 +88,7 @@
                     lavouras com custo zero de eletricidade.
                 </p>
 
-                <a href="blogIndividual.html">
+                <a href="blogIndividual.html?id=1">
                     mais...
                 </a>
 
@@ -106,7 +108,7 @@
                     parceiras da FreeSol.
                 </p>
 
-                <a href="blogIndividual.html">
+                <a href="blogIndividual.html?id=2">
                     mais...
                 </a>
 
@@ -126,7 +128,7 @@
                     um lote de 150 painéis fotovoltaicos e 10 inversores de alta capacidade.
                 </p>
 
-                <a href="blogIndividual.html">
+                <a href="blogIndividual.html?id=3">
                     mais...
                 </a>
 
@@ -143,19 +145,23 @@
                 <i data-lucide="sun"></i>
                 <h2>Patrocine o FreeSol</h2>
             </div>
-            <button type="button" id="btnFecharModalPatrocinador" onclick="document.getElementById('modalPatrocinador').close()" aria-label="Fechar"></button>
+            <button type="button" id="btnFecharModalPatrocinador"
+                onclick="document.getElementById('modalPatrocinador').close()" aria-label="Fechar"></button>
         </header>
         <main>
-            <p>Sua empresa pode doar painéis, apoiar a instalação de um parque comunitário ou patrocinar uma família.</p>
+            <p>Sua empresa pode doar painéis, apoiar a instalação de um parque comunitário ou patrocinar uma família.
+            </p>
             <fieldset>
                 <legend>Simular doação corporativa:</legend>
-                <input type="range" id="simulador-range" name="simulador-range" min="1" max="100" value="5" oninput="document.getElementById('valorPaineis').innerText = this.value; document.getElementById('valorFamilias').innerText = this.value">
+                <input type="range" id="simulador-range" name="simulador-range" min="1" max="100" value="5"
+                    oninput="document.getElementById('valorPaineis').innerText = this.value; document.getElementById('valorFamilias').innerText = this.value">
                 <div>
                     <span>Kits de Painéis: <strong id="valorPaineis">5</strong></span>
                     <span>Famílias impactadas: <strong id="valorFamilias">5</strong></span>
                 </div>
             </fieldset>
-            <form action="#" method="post" onsubmit="alert('Obrigado pelo seu interesse! Nossa equipe entrará em contato em breve.'); document.getElementById('modalPatrocinador').close(); return false;">
+            <form action="#" method="post"
+                onsubmit="alert('Obrigado pelo seu interesse! Nossa equipe entrará em contato em breve.'); document.getElementById('modalPatrocinador').close(); return false;">
                 <div>
                     <label for="empresa">NOME DA EMPRESA / INDÚSTRIA *</label>
                     <input type="text" id="empresa" name="empresa" placeholder="Ex: SolarTech Brasil" required>

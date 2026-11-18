@@ -1,0 +1,100 @@
+
+[
+    {
+        "id": 1,
+        "titulo": "FreeSol instala primeiro parque solar comunitário para agricultores da região",
+        "resumo": "A energia limpa permitiu que pequenos produtores irrigassem suas lavouras com custo zero de eletricidade.",
+        "data": "18 de Agosto, 2026",
+        "autor": "Redação FreeSol",
+        "imagem": "../img/imagem1.jpg",
+        "imagemCapa": "../img/noticia-1.jpg",
+        "alt": "Instalação de painel solar em uma propriedade rural",
+        "conteudo": [
+            {
+                "tipo": "paragrafo",
+                "texto": "Nesta semana, a equipe do FreeSol concluiu com sucesso a instalação de um parque solar comunitário projetado para abastecer 30 pequenas propriedades rurais."
+            },
+            {
+                "tipo": "titulo",
+                "texto": "Principais Conquistas do Projeto:"
+            },
+            {
+                "tipo": "lista",
+                "itens": [
+                    "Redução média de 85% na conta de luz dos agricultores.",
+                    "Capacidade de irrigação contínua durante horários de sol pleno.",
+                    "Evitação da emissão de mais de 12 toneladas de CO2 no primeiro ano.",
+                    "Manutenção de longo prazo garantida por doadores parceiros."
+                ]
+            },
+            {
+                "tipo": "paragrafo",
+                "texto": "O patrocínio de indústrias parceiras e fabricantes solares cobriu 100% do custo dos equipamentos e da instalação técnica."
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "titulo": "Como grandes indústrias podem patrocinar sistemas solares",
+        "resumo": "Entenda os incentivos fiscais e o retorno ESG para empresas parceiras da FreeSol.",
+        "data": "20 de Agosto, 2026",
+        "autor": "Redação FreeSol",
+        "imagem": "../img/imagem2.jpg",
+        "imagemCapa": "../img/noticia-2.jpg",
+        "alt": "Sistema de energia solar",
+        "conteudo": [
+            {
+                "tipo": "paragrafo",
+                "texto": "Grandes indústrias podem contribuir diretamente para a expansão da energia solar comunitária por meio de doações e parcerias."
+            },
+            {
+                "tipo": "titulo",
+                "texto": "Como as empresas podem ajudar:"
+            },
+            {
+                "tipo": "lista",
+                "itens": [
+                    "Doação de painéis fotovoltaicos.",
+                    "Financiamento de instalações solares.",
+                    "Apoio técnico e manutenção dos sistemas."
+                ]
+            },
+            {
+                "tipo": "paragrafo",
+                "texto": "Além do impacto social, essas iniciativas fortalecem as práticas ambientais e sociais das empresas parceiras."
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "titulo": "Empresas de painéis solares doam kits de geração para comunidades",
+        "resumo": "Com o apoio de fabricantes nacionais e internacionais, recebemos um lote de 150 painéis fotovoltaicos e 10 inversores de alta capacidade.",
+        "data": "25 de Agosto, 2026",
+        "autor": "Redação FreeSol",
+        "imagem": "../img/imagem3.jpg",
+        "imagemCapa": "../img/noticia-3.jpg",
+        "alt": "Grande área com painéis solares",
+        "conteudo": [
+            {
+                "tipo": "paragrafo",
+                "texto": "O FreeSol recebeu uma importante doação de equipamentos destinados à expansão dos projetos de energia solar comunitária."
+            },
+            {
+                "tipo": "titulo",
+                "texto": "Equipamentos recebidos:"
+            },
+            {
+                "tipo": "lista",
+                "itens": [
+                    "150 painéis fotovoltaicos.",
+                    "10 inversores de alta capacidade.",
+                    "Equipamentos para instalação e monitoramento."
+                ]
+            },
+            {
+                "tipo": "paragrafo",
+                "texto": "A parceria com fabricantes nacionais e internacionais permitirá ampliar o número de comunidades atendidas."
+            }
+        ]
+    }
+]
