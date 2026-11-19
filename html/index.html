@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="pt-BR">
 
@@ -9,6 +10,7 @@
 
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="../css/modalNoticias.css" />
 </head>
 
 <body>
@@ -35,7 +37,8 @@
     <div id="menuOverlay" class="menu-overlay" aria-hidden="true">
         <aside class="menu-gaveta">
             <div class="menu-topo">
-                <button type="button" id="btnFecharMenu" class="btn-fechar-menu" aria-label="Fechar menu">
+                <button type="button" id="btnFecharMenu"
+                    class="btn-fechar-menu" aria-label="Fechar menu">
                     <i data-lucide="x"></i>
                 </button>
             </div>
@@ -54,41 +57,55 @@
                     <a href="telaContato.html">CONTATO</a>
                 </nav>
 
-                <a href="#modalPatrocinador" onclick="if (window.fecharMenu) fecharMenu(); document.getElementById('modalPatrocinador').showModal(); return false;" class="btn-menu-patrocinar">
-                    <i data-lucide="heart-handshake"></i> Seja um Patrocinador
+                <a href="#modalPatrocinador"
+                    onclick="if (window.fecharMenu) fecharMenu(); document.getElementById('modalPatrocinador').showModal(); return false;"
+                    class="btn-menu-patrocinar">
+                    <i data-lucide="heart-handshake"></i>
+                    Seja um Patrocinador
                 </a>
             </div>
 
-            <div class="menu-rodape">FreeSol • Energia Solar para Todos</div>
+            <div class="menu-rodape">
+                FreeSol • Energia Solar para Todos
+            </div>
         </aside>
     </div>
 
     <main class="home-main">
+
         <!-- HERO -->
         <section class="hero">
             <div class="hero-conteudo">
                 <span class="hero-badge">
-                    <i data-lucide="zap"></i> Projeto Social Sem Fins Lucrativos
+                    <i data-lucide="zap"></i>
+                    Projeto Social Sem Fins Lucrativos
                 </span>
 
                 <h1>Energia solar para quem mais precisa.</h1>
 
                 <p>
-                    Democratizamos o acesso à energia limpa fornecendo painéis solares para famílias vulneráveis e
-                    pequenos produtores rurais.
+                    Democratizamos o acesso à energia limpa fornecendo
+                    painéis solares para famílias vulneráveis e pequenos
+                    produtores rurais.
                 </p>
 
                 <div class="hero-acoes">
-                    <a href="#modalPatrocinador" onclick="document.getElementById('modalPatrocinador').showModal(); return false;" class="btn-principal">
-                        <i data-lucide="heart-handshake"></i> SEJA UM PATROCINADOR
+                    <a href="#modalPatrocinador"
+                        onclick="document.getElementById('modalPatrocinador').showModal(); return false;"
+                        class="btn-principal">
+                        <i data-lucide="heart-handshake"></i>
+                        SEJA UM PATROCINADOR
                     </a>
 
-                    <a href="sobreNos.html" class="btn-secundario">Conheça o Projeto</a>
+                    <a href="sobreNos.html" class="btn-secundario">
+                        Conheça o Projeto
+                    </a>
                 </div>
             </div>
         </section>
 
         <div class="conteudo-pagina">
+
             <!-- IMPACTO -->
             <section class="card-impacto">
                 <div class="impacto-item">
@@ -115,79 +132,15 @@
             <section class="secao-noticias">
                 <div class="secao-topo">
                     <h2 class="secao-titulo">Notícias</h2>
-                    <a href="blogIndividual.html?id=1" class="secao-link-todas">Ver todas <i data-lucide="chevron-right"></i></a>
-                </div>
 
-                <div class="noticias-conteudo">
-                    <a href="blogIndividual.html" class="card-destaque">
-                        <div class="card-destaque-imagem">
-                            <img src="../img/noticia-1.jpg"
-                                alt="Painéis solares comunitários" />
-
-                            <span class="badge-destaque">Destaque</span>
-                        </div>
-
-                        <div class="card-destaque-corpo">
-                            <span class="card-data">18 de Agosto, 2026</span>
-
-                            <h3 class="card-destaque-titulo">
-                                FreeSol instala primeiro parque solar comunitário para
-                                agricultores da região
-                            </h3>
-
-                            <p class="card-destaque-resumo">
-                                Iniciativa beneficiou mais de 30 pequenas propriedades rurais,
-                                garantindo redução de até 85% no custo da energia.
-                            </p>
-
-                            <span class="card-link-acao">
-                                Leia a matéria <i data-lucide="arrow-right"></i>
-                            </span>
-                        </div>
+                    <a href="blogs.html" class="secao-link-todas">
+                        Ver todas
+                        <i data-lucide="chevron-right"></i>
                     </a>
-
-                    <div class="noticias-secundarias">
-                        <a href="blogIndividual.html?id=2" class="card-secundario">
-                            <div class="card-secundario-imagem">
-                                <img src="../img/noticia-2.jpg"
-                                    alt="Instalação solar industrial" />
-                            </div>
-
-                            <div class="card-secundario-corpo">
-                                <div>
-                                    <span class="card-categoria">Sustentabilidade</span>
-
-                                    <h4 class="card-secundario-titulo">
-                                        Como grandes indústrias estão zerando impostos com doações
-                                    </h4>
-                                </div>
-
-                                <span class="card-link-acao">Ver <i data-lucide="chevron-right"></i></span>
-                            </div>
-                        </a>
-
-                        <a href="blogIndividual.html?id=3" class="card-secundario">
-                            <div class="card-secundario-imagem">
-                                <img src="../img/noticia-3.jpg"
-                                    alt="Energia Limpa e painéis solares" />
-                            </div>
-
-                            <div class="card-secundario-corpo">
-                                <div>
-                                    <span class="card-categoria">Parcerias</span>
-
-                                    <h4 class="card-secundario-titulo">
-                                        Empresas de painéis solares doam kits de geração para comunidades
-                                    </h4>
-                                </div>
-
-                                <span class="card-link-acao">
-                                    Ver <i data-lucide="chevron-right"></i>
-                                </span>
-                            </div>
-                        </a>
-                    </div>
                 </div>
+
+                <!-- Cards criados automaticamente pelo JavaScript -->
+                <div class="noticias-conteudo"></div>
             </section>
 
             <!-- PATROCINADORES -->
@@ -195,81 +148,152 @@
                 <div class="secao-topo">
                     <h2 class="secao-titulo">Patrocinadores</h2>
 
-                    <a href="#modalPatrocinador" onclick="document.getElementById('modalPatrocinador').showModal(); return false;" class="secao-link-todas">
-                        Patrocinar <i data-lucide="chevron-right"></i>
+                    <a href="#modalPatrocinador"
+                        onclick="document.getElementById('modalPatrocinador').showModal(); return false;"
+                        class="secao-link-todas">
+                        Patrocinar
+                        <i data-lucide="chevron-right"></i>
                     </a>
                 </div>
 
                 <p class="patrocinadores-descricao">
-                    Grandes indústrias e fornecedores solares que tornam o FreeSol possível:
+                    Grandes indústrias e fornecedores solares que tornam
+                    o FreeSol possível:
                 </p>
 
                 <div class="patrocinadores-lista">
                     <div class="patrocinador-item">
-                        <span class="patrocinador-icone"><i data-lucide="sun"></i></span>
+                        <span class="patrocinador-icone">
+                            <i data-lucide="sun"></i>
+                        </span>
                         <span class="patrocinador-nome">SolarTech</span>
                     </div>
 
                     <div class="patrocinador-item">
-                        <span class="patrocinador-icone"><i data-lucide="factory"></i></span>
+                        <span class="patrocinador-icone">
+                            <i data-lucide="factory"></i>
+                        </span>
                         <span class="patrocinador-nome">EcoIndústria</span>
                     </div>
 
                     <div class="patrocinador-item">
-                        <span class="patrocinador-icone"><i data-lucide="leaf"></i></span>
+                        <span class="patrocinador-icone">
+                            <i data-lucide="leaf"></i>
+                        </span>
                         <span class="patrocinador-nome">GreenGrid</span>
                     </div>
 
                     <div class="patrocinador-item">
-                        <span class="patrocinador-icone"><i data-lucide="zap"></i></span>
+                        <span class="patrocinador-icone">
+                            <i data-lucide="zap"></i>
+                        </span>
                         <span class="patrocinador-nome">Voltaic Energy</span>
                     </div>
                 </div>
             </section>
+
         </div>
     </main>
 
     <!-- MODAL SEJA PATROCINADOR -->
-    <dialog id="modalPatrocinador" class="modal-patrocinador" onclick="if (event.target === this) this.close()">
+    <dialog id="modalPatrocinador"
+        class="modal-patrocinador"
+        onclick="if (event.target === this) this.close()">
+
         <header>
             <div>
                 <i data-lucide="sun"></i>
                 <h2>Patrocine o FreeSol</h2>
             </div>
-            <button type="button" id="btnFecharModalPatrocinador" onclick="document.getElementById('modalPatrocinador').close()" aria-label="Fechar"></button>
+
+            <button type="button"
+                id="btnFecharModalPatrocinador"
+                onclick="document.getElementById('modalPatrocinador').close()"
+                aria-label="Fechar">
+            </button>
         </header>
+
         <main>
-            <p>Sua empresa pode doar painéis, apoiar a instalação de um parque comunitário ou patrocinar uma família.</p>
+            <p>
+                Sua empresa pode doar painéis, apoiar a instalação de
+                um parque comunitário ou patrocinar uma família.
+            </p>
+
             <fieldset>
                 <legend>Simular doação corporativa:</legend>
-                <input type="range" id="simulador-range" name="simulador-range" min="1" max="100" value="5" oninput="document.getElementById('valorPaineis').innerText = this.value; document.getElementById('valorFamilias').innerText = this.value">
+
+                <input type="range"
+                    id="simulador-range"
+                    name="simulador-range"
+                    min="1"
+                    max="100"
+                    value="5"
+                    oninput="document.getElementById('valorPaineis').innerText = this.value; document.getElementById('valorFamilias').innerText = this.value">
+
                 <div>
-                    <span>Kits de Painéis: <strong id="valorPaineis">5</strong></span>
-                    <span>Famílias impactadas: <strong id="valorFamilias">5</strong></span>
+                    <span>
+                        Kits de Painéis:
+                        <strong id="valorPaineis">5</strong>
+                    </span>
+
+                    <span>
+                        Famílias impactadas:
+                        <strong id="valorFamilias">5</strong>
+                    </span>
                 </div>
             </fieldset>
-            <form action="#" method="post" onsubmit="alert('Obrigado pelo seu interesse! Nossa equipe entrará em contato em breve.'); document.getElementById('modalPatrocinador').close(); return false;">
+
+            <form action="#" method="post"
+                onsubmit="alert('Obrigado pelo seu interesse! Nossa equipe entrará em contato em breve.'); document.getElementById('modalPatrocinador').close(); return false;">
+
                 <div>
-                    <label for="empresa">NOME DA EMPRESA / INDÚSTRIA *</label>
-                    <input type="text" id="empresa" name="empresa" placeholder="Ex: SolarTech Brasil" required>
+                    <label for="empresa">
+                        NOME DA EMPRESA / INDÚSTRIA *
+                    </label>
+
+                    <input type="text"
+                        id="empresa"
+                        name="empresa"
+                        placeholder="Ex: SolarTech Brasil"
+                        required>
                 </div>
+
                 <div>
-                    <label for="emailCorp">E-MAIL CORPORATIVO *</label>
-                    <input type="email" id="emailCorp" name="emailCorp" placeholder="contato@empresa.com" required>
+                    <label for="emailCorp">
+                        E-MAIL CORPORATIVO *
+                    </label>
+
+                    <input type="email"
+                        id="emailCorp"
+                        name="emailCorp"
+                        placeholder="contato@empresa.com"
+                        required>
                 </div>
+
                 <div>
                     <label for="tipoApoio">TIPO DE APOIO</label>
+
                     <select id="tipoApoio" name="tipoApoio">
-                        <option value="equipamentos" selected>Doação de Equipamentos (Painéis/Inversores)</option>
-                        <option value="instalacao">Apoio na instalação de parque</option>
-                        <option value="patrocinio-familia">Patrocínio de família</option>
+                        <option value="equipamentos" selected>
+                            Doação de Equipamentos (Painéis/Inversores)
+                        </option>
+
+                        <option value="instalacao">
+                            Apoio na instalação de parque
+                        </option>
+
+                        <option value="patrocinio-familia">
+                            Patrocínio de família
+                        </option>
                     </select>
                 </div>
+
                 <button type="submit">ENVIAR</button>
             </form>
         </main>
     </dialog>
 
+    <!-- FOOTER -->
     <footer class="footer-completo">
         <div class="footer-logo">
             <div class="footer-logo-icone">
@@ -297,9 +321,11 @@
 
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="../js/menu.js"></script>
+    <script src="../js/modalNoticias.js"></script>
+
     <script>
         lucide.createIcons();
     </script>
-</body>
 
+</body>
 </html>

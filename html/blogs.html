@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -9,6 +10,7 @@
 
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/blogs.css">
+    <link rel="stylesheet" href="../css/modalNoticias.css">
 </head>
 
 <body>
@@ -35,8 +37,12 @@
     <!-- SIDEBAR -->
     <div id="menuOverlay" class="menu-overlay" aria-hidden="true">
         <aside class="menu-gaveta">
+
             <div class="menu-topo">
-                <button type="button" id="btnFecharMenu" class="btn-fechar-menu" aria-label="Fechar menu">
+                <button type="button"
+                    id="btnFecharMenu"
+                    class="btn-fechar-menu"
+                    aria-label="Fechar menu">
                     <i data-lucide="x"></i>
                 </button>
             </div>
@@ -58,132 +64,131 @@
                 <a href="#modalPatrocinador"
                     onclick="if (window.fecharMenu) fecharMenu(); document.getElementById('modalPatrocinador').showModal(); return false;"
                     class="btn-menu-patrocinar">
-                    <i data-lucide="heart-handshake"></i> Seja um Patrocinador
+                    <i data-lucide="heart-handshake"></i>
+                    Seja um Patrocinador
                 </a>
             </div>
 
-            <div class="menu-rodape">FreeSol • Energia Solar para Todos</div>
+            <div class="menu-rodape">
+                FreeSol • Energia Solar para Todos
+            </div>
+
         </aside>
     </div>
 
     <main>
-
         <section>
 
             <h1>BLOG FREESOL</h1>
 
             <span>Notícias & Artigos</span>
 
-
-            <article>
-
-                <img src="../img/noticia-1.jpg" alt="Instalação de painel solar em uma propriedade rural">
-
-                <h2>
-                    FreeSol instala primeiro parque solar comunitário para agricultores
-                </h2>
-
-                <p>
-                    A energia limpa permitiu que pequenos produtores irrigassem suas
-                    lavouras com custo zero de eletricidade.
-                </p>
-
-                <a href="blogIndividual.html?id=1">
-                    mais...
-                </a>
-
-            </article>
-
-
-            <article>
-
-                <img src="../img/noticia-2.jpg" alt="Sistema de energia solar">
-
-                <h2>
-                    Como grandes indústrias podem patrocinar sistemas solares
-                </h2>
-
-                <p>
-                    Entenda os incentivos fiscais e o retorno ESG para empresas
-                    parceiras da FreeSol.
-                </p>
-
-                <a href="blogIndividual.html?id=2">
-                    mais...
-                </a>
-
-            </article>
-
-
-            <article>
-
-                <img src="../img/noticia-3.jpg" alt="Grande área com painéis solares">
-
-                <h2>
-                    Empresas de painéis solares doam kits de geração para comunidades
-                </h2>
-
-                <p>
-                    Com o apoio de fabricantes nacionais e internacionais, recebemos
-                    um lote de 150 painéis fotovoltaicos e 10 inversores de alta capacidade.
-                </p>
-
-                <a href="blogIndividual.html?id=3">
-                    mais...
-                </a>
-
-            </article>
+            <div id="listaNoticias"></div>
 
         </section>
-
     </main>
 
     <!-- MODAL SEJA PATROCINADOR -->
-    <dialog id="modalPatrocinador" class="modal-patrocinador" onclick="if (event.target === this) this.close()">
+    <dialog id="modalPatrocinador"
+        class="modal-patrocinador"
+        onclick="if (event.target === this) this.close()">
+
         <header>
             <div>
                 <i data-lucide="sun"></i>
                 <h2>Patrocine o FreeSol</h2>
             </div>
-            <button type="button" id="btnFecharModalPatrocinador"
-                onclick="document.getElementById('modalPatrocinador').close()" aria-label="Fechar"></button>
+
+            <button type="button"
+                id="btnFecharModalPatrocinador"
+                onclick="document.getElementById('modalPatrocinador').close()"
+                aria-label="Fechar">
+            </button>
         </header>
+
         <main>
-            <p>Sua empresa pode doar painéis, apoiar a instalação de um parque comunitário ou patrocinar uma família.
+            <p>
+                Sua empresa pode doar painéis, apoiar a instalação de
+                um parque comunitário ou patrocinar uma família.
             </p>
+
             <fieldset>
                 <legend>Simular doação corporativa:</legend>
-                <input type="range" id="simulador-range" name="simulador-range" min="1" max="100" value="5"
+
+                <input type="range"
+                    id="simulador-range"
+                    name="simulador-range"
+                    min="1"
+                    max="100"
+                    value="5"
                     oninput="document.getElementById('valorPaineis').innerText = this.value; document.getElementById('valorFamilias').innerText = this.value">
+
                 <div>
-                    <span>Kits de Painéis: <strong id="valorPaineis">5</strong></span>
-                    <span>Famílias impactadas: <strong id="valorFamilias">5</strong></span>
+                    <span>
+                        Kits de Painéis:
+                        <strong id="valorPaineis">5</strong>
+                    </span>
+
+                    <span>
+                        Famílias impactadas:
+                        <strong id="valorFamilias">5</strong>
+                    </span>
                 </div>
             </fieldset>
+
             <form action="#" method="post"
                 onsubmit="alert('Obrigado pelo seu interesse! Nossa equipe entrará em contato em breve.'); document.getElementById('modalPatrocinador').close(); return false;">
+
                 <div>
-                    <label for="empresa">NOME DA EMPRESA / INDÚSTRIA *</label>
-                    <input type="text" id="empresa" name="empresa" placeholder="Ex: SolarTech Brasil" required>
+                    <label for="empresa">
+                        NOME DA EMPRESA / INDÚSTRIA *
+                    </label>
+
+                    <input type="text"
+                        id="empresa"
+                        name="empresa"
+                        placeholder="Ex: SolarTech Brasil"
+                        required>
                 </div>
+
                 <div>
-                    <label for="emailCorp">E-MAIL CORPORATIVO *</label>
-                    <input type="email" id="emailCorp" name="emailCorp" placeholder="contato@empresa.com" required>
+                    <label for="emailCorp">
+                        E-MAIL CORPORATIVO *
+                    </label>
+
+                    <input type="email"
+                        id="emailCorp"
+                        name="emailCorp"
+                        placeholder="contato@empresa.com"
+                        required>
                 </div>
+
                 <div>
                     <label for="tipoApoio">TIPO DE APOIO</label>
+
                     <select id="tipoApoio" name="tipoApoio">
-                        <option value="equipamentos" selected>Doação de Equipamentos (Painéis/Inversores)</option>
-                        <option value="instalacao">Apoio na instalação de parque</option>
-                        <option value="patrocinio-familia">Patrocínio de família</option>
+                        <option value="equipamentos" selected>
+                            Doação de Equipamentos (Painéis/Inversores)
+                        </option>
+
+                        <option value="instalacao">
+                            Apoio na instalação de parque
+                        </option>
+
+                        <option value="patrocinio-familia">
+                            Patrocínio de família
+                        </option>
                     </select>
                 </div>
+
                 <button type="submit">ENVIAR</button>
             </form>
         </main>
     </dialog>
 
+    <!-- FOOTER -->
     <footer class="footer-completo">
+
         <div class="footer-logo">
             <div class="footer-logo-icone">
                 <i data-lucide="sun"></i>
@@ -206,13 +211,16 @@
         <div class="footer-copia">
             FOOTER • FreeSol © 2026. Todos os direitos reservados.
         </div>
+
     </footer>
 
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="../js/menu.js"></script>
+    <script src="../js/modalNoticias.js"></script>
+
     <script>
         lucide.createIcons();
     </script>
-</body>
 
+</body>
 </html>
