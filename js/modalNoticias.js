@@ -1,596 +1,205 @@
+// Redireciona / espelha o código de blogs.js
+var dados = [];
+var indexEdicao = -1;
 
-const caminhoJSON = "../dados/blogs.json";
+async function loadData() {
+    try {
+        var dadosSalvos = localStorage.getItem("blogs");
+        if (dadosSalvos) {
+            dados = JSON.parse(dadosSalvos);
+        } else {
+            var response = await fetch("../dados/blogs.json");
+            if (!response.ok) {
+                throw new Error("Erro ao obter dados: " + response.status);
+            }
+            dados = await response.json();
+            salvarDados();
+        }
+        renderizarPosts();
+    } catch (err) {
+        console.error(err);
+    }
+}
 
-let noticiasCarregadas = null;
+function salvarDados() {
+    localStorage.setItem("blogs", JSON.stringify(dados));
+}
 
-// ========================================
-// CARREGAMENTO DO JSON
-// ========================================
-
-async function carregarNoticias() {
-    if (!noticiasCarregadas) {
-        noticiasCarregadas = fetch(caminhoJSON)
-            .then(resposta => {
-                if (!resposta.ok) {
-                    throw new Error("Erro ao carregar dados/blogs.json");
-                }
-
-                return resposta.json();
-            })
-            .catch(erro => {
-                noticiasCarregadas = null;
-                throw erro;
-            });
+function renderizarPosts() {
+    var listaBlogs = document.getElementById("listaNoticias");
+    if (listaBlogs) {
+        listaBlogs.innerHTML = "";
+        if (dados.length === 0) {
+            listaBlogs.innerHTML = "<p>Nenhum post cadastrado.</p>";
+            return;
+        }
+        for (var i = 0; i < dados.length; i++) {
+            var post = dados[i];
+            var article = document.createElement("article");
+            article.className = "card-noticia";
+            var resumo = post.texto.length > 120 ? post.texto.substring(0, 120) + "..." : post.texto;
+            article.innerHTML = `
+                <div class="card-imagem-area" onclick="verPost(${i})">
+                    <img src="${post.imagem}" alt="${post.titulo}">
+                </div>
+                <div class="card-conteudo-area">
+                    <h2 onclick="verPost(${i})">${post.titulo}</h2>
+                    <p onclick="verPost(${i})">${resumo}</p>
+                    <div class="card-rodape">
+                        <button type="button" class="btn-ler-mais" onclick="verPost(${i})">Ler mais ›</button>
+                        <div class="card-botoes-gestao">
+                            <button type="button" class="btn-icone-acao btn-editar" onclick="abrirModalEditar(${i})" title="Editar Post">
+                                <i data-lucide="pencil"></i>
+                            </button>
+                            <button type="button" class="btn-icone-acao btn-excluir" onclick="excluirPost(${i})" title="Excluir Post">
+                                <i data-lucide="trash-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            listaBlogs.appendChild(article);
+        }
     }
 
-    return noticiasCarregadas;
-}
-
-// ========================================
-// FUNÇÕES AUXILIARES
-// ========================================
-
-function criarElemento(tag, classe, texto) {
-    const elemento = document.createElement(tag);
-
-    if (classe) {
-        elemento.className = classe;
-    }
-
-    if (texto !== undefined && texto !== null) {
-        elemento.textContent = texto;
-    }
-
-    return elemento;
-}
-
-function obterImagem(noticia) {
-    return noticia.imagemCapa || noticia.imagem || "";
-}
-
-function obterLink(noticia) {
-    return `blogIndividual.html?id=${encodeURIComponent(noticia.id)}`;
-}
-
-// ========================================
-// CARD DESTAQUE DA HOME
-// ========================================
-
-function criarCardDestaque(noticia) {
-    const card = criarElemento("a", "card-destaque");
-
-    card.href = obterLink(noticia);
-    card.dataset.noticiaId = noticia.id;
-
-    const areaImagem = criarElemento("div", "card-destaque-imagem");
-
-    const imagem = criarElemento("img");
-    imagem.src = obterImagem(noticia);
-    imagem.alt = noticia.alt || noticia.titulo;
-
-    const badge = criarElemento(
-        "span",
-        "badge-destaque",
-        "Destaque"
-    );
-
-    areaImagem.append(imagem, badge);
-
-    const corpo = criarElemento("div", "card-destaque-corpo");
-
-    const data = criarElemento(
-        "span",
-        "card-data",
-        noticia.data
-    );
-
-    const titulo = criarElemento(
-        "h3",
-        "card-destaque-titulo",
-        noticia.titulo
-    );
-
-    const resumo = criarElemento(
-        "p",
-        "card-destaque-resumo",
-        noticia.resumo
-    );
-
-    const acao = criarElemento("span", "card-link-acao");
-
-    acao.append(document.createTextNode("Leia a matéria "));
-
-    const icone = document.createElement("i");
-    icone.dataset.lucide = "arrow-right";
-
-    acao.appendChild(icone);
-
-    corpo.append(data, titulo, resumo, acao);
-
-    card.append(areaImagem, corpo);
-
-    return card;
-}
-
-// ========================================
-// CARDS SECUNDÁRIOS DA HOME
-// ========================================
-
-function criarCardSecundario(noticia) {
-    const card = criarElemento("a", "card-secundario");
-
-    card.href = obterLink(noticia);
-    card.dataset.noticiaId = noticia.id;
-
-    const areaImagem = criarElemento(
-        "div",
-        "card-secundario-imagem"
-    );
-
-    const imagem = criarElemento("img");
-    imagem.src = obterImagem(noticia);
-    imagem.alt = noticia.alt || noticia.titulo;
-
-    areaImagem.appendChild(imagem);
-
-    const corpo = criarElemento(
-        "div",
-        "card-secundario-corpo"
-    );
-
-    const informacoes = criarElemento("div");
-
-    const categoria = criarElemento(
-        "span",
-        "card-categoria",
-        "Notícia"
-    );
-
-    const titulo = criarElemento(
-        "h4",
-        "card-secundario-titulo",
-        noticia.titulo
-    );
-
-    informacoes.append(categoria, titulo);
-
-    const acao = criarElemento("span", "card-link-acao");
-
-    acao.append(document.createTextNode("Ver "));
-
-    const icone = document.createElement("i");
-    icone.dataset.lucide = "chevron-right";
-
-    acao.appendChild(icone);
-
-    corpo.append(informacoes, acao);
-
-    card.append(areaImagem, corpo);
-
-    return card;
-}
-
-// ========================================
-// CARDS DA PÁGINA BLOGS
-// ========================================
-
-function criarCardBlog(noticia) {
-    const card = criarElemento("article", "card-noticia");
-
-    card.dataset.noticiaId = noticia.id;
-    card.tabIndex = 0;
-    card.setAttribute("role", "button");
-
-    card.setAttribute(
-        "aria-label",
-        `Abrir notícia: ${noticia.titulo}`
-    );
-
-    const imagem = criarElemento("img");
-    imagem.src = obterImagem(noticia);
-    imagem.alt = noticia.alt || noticia.titulo;
-
-    const titulo = criarElemento(
-        "h2",
-        "",
-        noticia.titulo
-    );
-
-    const resumo = criarElemento(
-        "p",
-        "",
-        noticia.resumo
-    );
-
-    const link = criarElemento("a", "", "mais...");
-    link.href = obterLink(noticia);
-
-    card.append(imagem, titulo, resumo, link);
-
-    return card;
-}
-
-// ========================================
-// RENDERIZAÇÃO AUTOMÁTICA
-// ========================================
-
-function renderizarNoticias(noticias) {
-
-    // PÁGINA INICIAL
-    const containerHome = document.querySelector(
-        ".noticias-conteudo"
-    );
-
+    var containerHome = document.querySelector(".noticias-conteudo");
     if (containerHome) {
         containerHome.innerHTML = "";
+        if (dados.length === 0) {
+            containerHome.innerHTML = "<p>Nenhuma notícia cadastrada.</p>";
+            return;
+        }
 
-        if (noticias.length === 0) {
-            containerHome.textContent =
-                "Nenhuma notícia cadastrada.";
-        } else {
-            // Primeira notícia como destaque
-            containerHome.appendChild(
-                criarCardDestaque(noticias[0])
-            );
+        var p1 = dados[0];
+        var resumoDestaque = p1.texto.length > 130 ? p1.texto.substring(0, 130) + "..." : p1.texto;
 
-            // Demais notícias como cards secundários
-            if (noticias.length > 1) {
-                const secundarias = criarElemento(
-                    "div",
-                    "noticias-secundarias"
-                );
+        var htmlDestaque = `
+            <a class="card-destaque" href="blogs.html">
+                <div class="card-destaque-imagem">
+                    <img src="${p1.imagem}" alt="${p1.titulo}">
+                    <span class="badge-destaque">Destaque</span>
+                </div>
+                <div class="card-destaque-corpo">
+                    <h3 class="card-destaque-titulo">${p1.titulo}</h3>
+                    <p class="card-destaque-resumo">${resumoDestaque}</p>
+                    <span class="card-link-acao">Leia a matéria <i data-lucide="arrow-right"></i></span>
+                </div>
+            </a>
+        `;
 
-                noticias.slice(1).forEach(noticia => {
-                    secundarias.appendChild(
-                        criarCardSecundario(noticia)
-                    );
-                });
-
-                containerHome.appendChild(secundarias);
+        var htmlSecundarios = "";
+        if (dados.length > 1) {
+            htmlSecundarios += '<div class="noticias-secundarias">';
+            for (var j = 1; j < Math.min(dados.length, 3); j++) {
+                var p = dados[j];
+                htmlSecundarios += `
+                    <a class="card-secundario" href="blogs.html">
+                        <div class="card-secundario-imagem">
+                            <img src="${p.imagem}" alt="${p.titulo}">
+                        </div>
+                        <div class="card-secundario-corpo">
+                            <div>
+                                <span class="card-categoria">Notícia</span>
+                                <h4 class="card-secundario-titulo">${p.titulo}</h4>
+                            </div>
+                            <span class="card-link-acao">Ver <i data-lucide="chevron-right"></i></span>
+                        </div>
+                    </a>
+                `;
             }
+            htmlSecundarios += '</div>';
         }
+
+        containerHome.innerHTML = htmlDestaque + htmlSecundarios;
     }
 
-    // PÁGINA DE BLOGS
-    const containerBlogs = document.getElementById(
-        "listaNoticias"
-    );
-
-    if (containerBlogs) {
-        containerBlogs.innerHTML = "";
-
-        if (noticias.length === 0) {
-            containerBlogs.textContent =
-                "Nenhuma notícia cadastrada.";
-        } else {
-            noticias.forEach(noticia => {
-                containerBlogs.appendChild(
-                    criarCardBlog(noticia)
-                );
-            });
-        }
-    }
-
-    // Atualiza os ícones
     if (window.lucide) {
         window.lucide.createIcons();
     }
 }
 
-// ========================================
-// CRIAÇÃO DO MODAL
-// ========================================
-
-function criarModalNoticias() {
-    const modal = document.createElement("dialog");
-
-    modal.id = "modalNoticia";
-    modal.className = "modal-noticia";
-
-    const conteudo = criarElemento(
-        "div",
-        "modal-noticia-conteudo"
-    );
-
-    const botaoFechar = criarElemento(
-        "button",
-        "modal-noticia-fechar",
-        "×"
-    );
-
-    botaoFechar.type = "button";
-
-    botaoFechar.setAttribute(
-        "aria-label",
-        "Fechar notícia"
-    );
-
-    const imagem = criarElemento(
-        "img",
-        "modal-noticia-imagem"
-    );
-
-    const data = criarElemento(
-        "span",
-        "modal-noticia-data"
-    );
-
-    const titulo = criarElemento(
-        "h2",
-        "modal-noticia-titulo"
-    );
-
-    const autor = criarElemento(
-        "p",
-        "modal-noticia-autor"
-    );
-
-    const texto = criarElemento(
-        "div",
-        "modal-noticia-texto"
-    );
-
-    conteudo.append(
-        botaoFechar,
-        imagem,
-        data,
-        titulo,
-        autor,
-        texto
-    );
-
-    modal.appendChild(conteudo);
-
-    document.body.appendChild(modal);
-
-    return modal;
+function verPost(index) {
+    var post = dados[index];
+    if (!post) return;
+    var modal = document.getElementById("modalVerPost");
+    if (!modal) return;
+    document.getElementById("verPostTitulo").innerText = post.titulo;
+    document.getElementById("verPostImagem").src = post.imagem;
+    document.getElementById("verPostImagem").alt = post.titulo;
+    document.getElementById("verPostTexto").innerText = post.texto;
+    modal.showModal();
+    if (window.lucide) window.lucide.createIcons();
 }
 
-const modal = criarModalNoticias();
-
-const conteudoModal = modal.querySelector(
-    ".modal-noticia-conteudo"
-);
-
-const imagemModal = modal.querySelector(
-    ".modal-noticia-imagem"
-);
-
-const dataModal = modal.querySelector(
-    ".modal-noticia-data"
-);
-
-const tituloModal = modal.querySelector(
-    ".modal-noticia-titulo"
-);
-
-const autorModal = modal.querySelector(
-    ".modal-noticia-autor"
-);
-
-const textoModal = modal.querySelector(
-    ".modal-noticia-texto"
-);
-
-const botaoFechar = modal.querySelector(
-    ".modal-noticia-fechar"
-);
-
-// ========================================
-// CONTEÚDO DA NOTÍCIA
-// ========================================
-
-function adicionarConteudoNoticia(noticia) {
-    textoModal.innerHTML = "";
-
-    (noticia.conteudo || []).forEach(item => {
-
-        if (item.tipo === "paragrafo") {
-            const paragrafo = criarElemento(
-                "p",
-                "",
-                item.texto
-            );
-
-            textoModal.appendChild(paragrafo);
-        }
-
-        else if (item.tipo === "titulo") {
-            const titulo = criarElemento(
-                "h3",
-                "",
-                item.texto
-            );
-
-            textoModal.appendChild(titulo);
-        }
-
-        else if (item.tipo === "lista") {
-            const lista = document.createElement("ul");
-
-            (item.itens || []).forEach(texto => {
-                const itemLista = criarElemento(
-                    "li",
-                    "",
-                    texto
-                );
-
-                lista.appendChild(itemLista);
-            });
-
-            textoModal.appendChild(lista);
-        }
-
-    });
+function fecharModalVerPost() {
+    var modal = document.getElementById("modalVerPost");
+    if (modal) modal.close();
 }
 
-// ========================================
-// BLOQUEIO DA ROLAGEM
-// ========================================
-
-function bloquearScroll() {
-    document.documentElement.classList.add("modal-aberto");
-    document.body.classList.add("modal-aberto");
-}
-
-function liberarScroll() {
-    document.documentElement.classList.remove("modal-aberto");
-    document.body.classList.remove("modal-aberto");
-}
-
-// ========================================
-// ABRIR NOTÍCIA
-// ========================================
-
-async function abrirNoticia(id) {
-    try {
-        const noticias = await carregarNoticias();
-
-        const noticia = noticias.find(
-            item => String(item.id) === String(id)
-        );
-
-        if (!noticia) {
-            console.error("Notícia não encontrada:", id);
-            return;
-        }
-
-        imagemModal.src = obterImagem(noticia);
-
-        imagemModal.alt =
-            noticia.alt || noticia.titulo;
-
-        dataModal.textContent = noticia.data || "";
-
-        tituloModal.textContent =
-            noticia.titulo || "";
-
-        autorModal.textContent = noticia.autor
-            ? `Por ${noticia.autor}`
-            : "";
-
-        adicionarConteudoNoticia(noticia);
-
-        conteudoModal.scrollTop = 0;
-
-        if (!modal.open) {
-            modal.showModal();
-            bloquearScroll();
-        }
-
-    } catch (erro) {
-        console.error(
-            "Erro ao abrir notícia:",
-            erro
-        );
+function abrirModalAdicionar() {
+    indexEdicao = -1;
+    document.getElementById("modalFormTitulo").innerText = "Adicionar Novo Post";
+    document.getElementById("inputTitulo").value = "";
+    document.getElementById("inputImagem").value = "../img/imagem1.jpg";
+    document.getElementById("inputTexto").value = "";
+    var modal = document.getElementById("modalFormulario");
+    if (modal) {
+        modal.showModal();
+        if (window.lucide) window.lucide.createIcons();
     }
 }
 
-// ========================================
-// FECHAR MODAL
-// ========================================
-
-function fecharModal() {
-    if (modal.open) {
-        modal.close();
+function abrirModalEditar(index) {
+    indexEdicao = index;
+    var post = dados[index];
+    document.getElementById("modalFormTitulo").innerText = "Editar Post";
+    document.getElementById("inputTitulo").value = post.titulo;
+    document.getElementById("inputImagem").value = post.imagem;
+    document.getElementById("inputTexto").value = post.texto;
+    var modal = document.getElementById("modalFormulario");
+    if (modal) {
+        modal.showModal();
+        if (window.lucide) window.lucide.createIcons();
     }
 }
 
-botaoFechar.addEventListener(
-    "click",
-    fecharModal
-);
+function fecharModalFormulario() {
+    var modal = document.getElementById("modalFormulario");
+    if (modal) modal.close();
+}
 
-modal.addEventListener("click", event => {
-    if (event.target === modal) {
-        fecharModal();
-    }
-});
-
-modal.addEventListener("close", liberarScroll);
-
-// ========================================
-// CLIQUES NOS CARDS
-// ========================================
-
-document.addEventListener("click", event => {
-    const card = event.target.closest(
-        "[data-noticia-id]"
-    );
-
-    if (!card) {
-        return;
-    }
-
+function salvarPost(event) {
     event.preventDefault();
-
-    abrirNoticia(card.dataset.noticiaId);
-});
-
-// ========================================
-// ACESSIBILIDADE PELO TECLADO
-// ========================================
-
-document.addEventListener("keydown", event => {
-    if (
-        event.key !== "Enter" &&
-        event.key !== " "
-    ) {
+    var titulo = document.getElementById("inputTitulo").value.trim();
+    var imagem = document.getElementById("inputImagem").value.trim() || "../img/imagem1.jpg";
+    var texto = document.getElementById("inputTexto").value.trim();
+    if (!titulo || !texto) {
+        alert("Preencha o título e o texto!");
         return;
     }
-
-    const card = event.target.closest(
-        "[data-noticia-id]"
-    );
-
-    if (
-        !card ||
-        card.tagName === "A" ||
-        modal.open ||
-        event.target !== card
-    ) {
-        return;
+    if (indexEdicao === -1) {
+        dados.unshift({
+            id: Date.now(),
+            titulo: titulo,
+            imagem: imagem,
+            texto: texto
+        });
+    } else {
+        dados[indexEdicao].titulo = titulo;
+        dados[indexEdicao].imagem = imagem;
+        dados[indexEdicao].texto = texto;
     }
+    salvarDados();
+    renderizarPosts();
+    fecharModalFormulario();
+}
 
-    event.preventDefault();
-
-    abrirNoticia(card.dataset.noticiaId);
-});
-
-// ========================================
-// INICIALIZAÇÃO
-// ========================================
-
-async function inicializarNoticias() {
-    try {
-        const noticias = await carregarNoticias();
-
-        renderizarNoticias(noticias);
-
-    } catch (erro) {
-        console.error(
-            "Erro ao carregar notícias:",
-            erro
-        );
-
-        const containerHome = document.querySelector(
-            ".noticias-conteudo"
-        );
-
-        const containerBlogs = document.getElementById(
-            "listaNoticias"
-        );
-
-        if (containerHome) {
-            containerHome.textContent =
-                "Não foi possível carregar as notícias.";
-        }
-
-        if (containerBlogs) {
-            containerBlogs.textContent =
-                "Não foi possível carregar as notícias.";
-        }
+function excluirPost(index) {
+    if (confirm("Deseja realmente excluir este post?")) {
+        dados.splice(index, 1);
+        salvarDados();
+        renderizarPosts();
     }
 }
 
-inicializarNoticias();
+loadData();

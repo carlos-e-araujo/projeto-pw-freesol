@@ -2,9 +2,7 @@
 main {
     width: 100%;
     min-height: calc(100vh - 105px);
-
-    padding: 85px 10px 30px;
-
+    padding: 85px 12px 30px;
     box-sizing: border-box;
 }
 
@@ -14,224 +12,416 @@ section {
 
 section > h1 {
     display: inline-block;
-
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
-
     color: #172033;
-
     margin: 0 0 16px 1px;
 }
 
 section > span {
     float: right;
-
     margin-top: -2px;
-
     padding: 4px 9px;
-
     border-radius: 12px;
-
     background-color: #fff0c9;
-
     color: #a76c00;
-
-    font-size: 8px;
+    font-size: 9px;
     font-weight: bold;
 }
 
-/* CARDS */
-article {
+/* CARDS DE NOTICIA */
+.card-noticia {
     width: 100%;
-
     background-color: #ffffff;
-
     border: 1px solid #dce2e8;
-
     border-radius: 13px;
-
-    padding: 9px;
-
-    margin-bottom: 10px;
-
+    padding: 10px;
+    margin-bottom: 14px;
     box-sizing: border-box;
-
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* IMG */
-article img {
-    display: block;
+.card-noticia:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
 
-    width: 100%;
-    height: 101px;
-
-    object-fit: cover;
-
+.card-imagem-area {
+    cursor: pointer;
+    overflow: hidden;
     border-radius: 10px;
-
-    margin-bottom: 8px;
+    margin-bottom: 9px;
 }
 
-article h2 {
-    font-size: 10.5px;
+.card-imagem-area img {
+    display: block;
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    transition: transform 0.25s ease;
+}
+
+.card-noticia:hover .card-imagem-area img {
+    transform: scale(1.03);
+}
+
+.card-conteudo-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-conteudo-area h2 {
+    font-size: 13px;
     line-height: 1.35;
     font-weight: 700;
-
     color: #182236;
-
-    margin: 0 0 5px;
+    margin: 0 0 6px;
+    cursor: pointer;
 }
 
-article p {
-    font-size: 9px;
+.card-conteudo-area h2:hover {
+    color: #f28c00;
+}
+
+.card-conteudo-area p {
+    font-size: 11px;
     line-height: 1.45;
-
-    color: #788292;
-
-    margin: 0 0 5px;
+    color: #64748b;
+    margin: 0 0 10px;
+    cursor: pointer;
 }
 
-/* LINK */
-article a {
-    display: block;
+/* RODAPÉ DO CARD COM LER MAIS E BOTÕES LÁPIS/LIXEIRA */
+.card-rodape {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    border-top: 1px solid #f1f5f9;
+}
 
+.btn-ler-mais {
+    background: none;
+    border: none;
+    color: #f28c00;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 4px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    transition: color 0.2s;
+}
+
+.btn-ler-mais:hover {
+    color: #d97706;
+    text-decoration: underline;
+}
+
+.card-botoes-gestao {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-icone-acao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0;
+}
+
+.btn-icone-acao i,
+.btn-icone-acao svg {
+    width: 15px;
+    height: 15px;
+}
+
+.btn-editar {
+    color: #2563eb;
+    background-color: #eff6ff;
+    border-color: #bfdbfe;
+}
+
+.btn-editar:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+}
+
+.btn-excluir {
+    color: #dc2626;
+    background-color: #fef2f2;
+    border-color: #fecaca;
+}
+
+.btn-excluir:hover {
+    background-color: #dc2626;
+    color: #ffffff;
+    border-color: #dc2626;
+}
+
+/* BOTÃO FLUTUANTE DE ADICIONAR (+) */
+.btn-flutuante-adicionar {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background-color: #f28c00;
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 16px rgba(242, 140, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.btn-flutuante-adicionar:hover {
+    background-color: #d97706;
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(242, 140, 0, 0.55);
+}
+
+.btn-flutuante-adicionar i,
+.btn-flutuante-adicionar svg {
+    width: 26px;
+    height: 26px;
+    stroke-width: 2.5;
+}
+
+/* MODAL SIMPLES (VISUALIZAÇÃO DO POST E FORMULÁRIO - SEM TRANSPARÊNCIA) */
+dialog.modal-simples {
+    margin: auto;
+    border: none !important;
+    outline: none !important;
+    border-radius: 16px !important;
+    padding: 0 !important;
+    width: min(92%, 620px) !important;
+    max-width: 620px !important;
+    max-height: 88vh !important;
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #172033 !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35) !important;
+    overflow: hidden !important;
+}
+
+dialog.modal-simples::backdrop {
+    background-color: rgba(15, 23, 42, 0.75) !important;
+    backdrop-filter: blur(4px) !important;
+}
+
+/* CONTEUDO DO MODAL DE LEITURA DO POST */
+.modal-conteudo-ver {
     position: relative;
-
-    color: #f28c00;
-
-    font-size: 9px;
-    font-weight: bold;
-
-    text-decoration: none;
-
-    padding-right: 12px;
+    padding: 24px;
+    background-color: #ffffff !important;
+    max-height: 88vh;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
-/* SETINHA */
-article a::after {
-    content: "›";
-
+.btn-fechar-topo {
     position: absolute;
-
-    right: 0;
-    top: -3px;
-
-    font-size: 17px;
-    font-weight: normal;
-
-    color: #f28c00;
+    top: 14px;
+    right: 14px;
+    z-index: 10;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #475569;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: background 0.2s;
 }
 
+.btn-fechar-topo:hover {
+    background: #f1f5f9;
+    color: #0f172a;
+}
 
-/* MEDIA QUERY */
+.modal-conteudo-ver img {
+    display: block;
+    width: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+.modal-conteudo-ver h2 {
+    font-size: 19px;
+    line-height: 1.35;
+    color: #172033;
+    margin: 0 0 14px;
+}
+
+.modal-conteudo-ver p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #475569;
+    margin: 0;
+    white-space: pre-line;
+}
+
+/* FORMULÁRIO DO MODAL (ADICIONAR / EDITAR) */
+.modal-form {
+    padding: 24px;
+    background-color: #ffffff !important;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-form-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.modal-form-topo h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #172033;
+}
+
+.modal-form label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.modal-form input,
+.modal-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.modal-form input:focus,
+.modal-form textarea:focus {
+    outline: none;
+    border-color: #f28c00;
+    box-shadow: 0 0 0 2px rgba(242, 140, 0, 0.2);
+}
+
+.modal-form textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.modal-form-botoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-cancelar {
+    background-color: #e2e8f0;
+    color: #334155;
+    padding: 9px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-cancelar:hover {
+    background-color: #cbd5e1;
+}
+
+.btn-salvar {
+    background-color: #16a34a;
+    color: #ffffff;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-salvar:hover {
+    background-color: #15803d;
+}
+
+/* MEDIA QUERIES (DESKTOP) */
 @media (min-width: 768px) {
-
     main {
-        width: 100%;
         max-width: 860px;
-
         margin: 0 auto;
-
         padding: 40px 20px 60px;
     }
 
-    section {
-        width: 100%;
-    }
-
     section > h1 {
-        font-size: 14px;
-
-        margin: 0 0 18px 1px;
+        font-size: 15px;
+        margin-bottom: 20px;
     }
 
-    section > span {
-        font-size: 9px;
-
-        padding: 5px 10px;
-    }
-
-    article {
+    .card-noticia {
         display: grid;
-
-        grid-template-columns: 46% 54%;
-        grid-template-rows: auto 1fr auto;
-
-        width: 100%;
-        min-height: 210px;
-
+        grid-template-columns: 44% 56%;
         padding: 0;
-
-        margin: 0 0 12px;
-
+        margin-bottom: 16px;
         overflow: hidden;
-
-        border-radius: 13px;
+        min-height: 210px;
     }
 
-    article img {
-        grid-column: 1;
-        grid-row: 1 / 4;
+    .card-imagem-area {
+        margin: 0;
+        border-radius: 0;
+        height: 100%;
+    }
 
-        width: 100%;
+    .card-imagem-area img {
         height: 100%;
         min-height: 210px;
-
-        object-fit: cover;
-
-        margin: 0;
-
-        border-radius: 0;
     }
 
-    article h2 {
-        grid-column: 2;
-        grid-row: 1;
+    .card-conteudo-area {
+        padding: 22px 24px;
+        justify-content: space-between;
+    }
 
+    .card-conteudo-area h2 {
         font-size: 15px;
-        line-height: 1.35;
-
-        margin: 30px 25px 8px;
+        margin-bottom: 8px;
     }
 
-    article p {
-        grid-column: 2;
-        grid-row: 2;
-
-        align-self: center;
-
-        font-size: 11px;
-        line-height: 1.5;
-
-        margin: 0 25px;
+    .card-conteudo-area p {
+        font-size: 12px;
+        margin-bottom: 14px;
     }
 
-    article a {
-        grid-column: 2;
-        grid-row: 3;
-
-        font-size: 10px;
-
-        margin: 0 25px 15px;
-    }
-
-    article a::after {
-        right: 0;
-    }
-}
-
-@media (min-width: 1200px) {
-
-    main {
-        max-width: 860px;
-    }
-
-    article {
-        min-height: 210px;
-    }
-
-    article img {
-        min-height: 210px;
+    .btn-flutuante-adicionar {
+        bottom: 35px;
+        right: 35px;
+        width: 60px;
+        height: 60px;
     }
 }
